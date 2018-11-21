@@ -1,0 +1,93 @@
+﻿@model souvenirs.Models.Order
+
+@{
+    ViewData["Title"] = "Purchased";
+}
+
+<h2>Purchased</h2>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OrderDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GST)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GST)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subtotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subtotal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.GrandTotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GrandTotal)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.User)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+        <dt>Souvenirs</dt>
+        <dd>
+            <div class="row">
+                <div class="col-sm-2">
+                    <h4 class="display-4">Souvenir</h4>
+                </div>
+                <div class="col-sm-2">
+                    <h4 class="display-4">Quantity</h4>
+                </div>
+                <div class="col-sm-2">
+                    <h4 class="display-4">Price</h4>
+                </div>
+            </div>
+
+            @foreach (var item in Model.OrderItems)
+            {
+                <div class="row">
+
+                    <div class="col-sm-2"><a asp-action="Details" asp-route-id="@item.Souvenir.ID">@item.Souvenir.Name</a> </div>
+
+                    <div class="col-sm-2">@item.Quantity</div>
+
+                    <div class="col-sm-2">$@item.OrderitemPrice</div>
+                </div>
+            }
+
+            <div>
+                <div></div>
+                <div>Sub Total:<span>$@Model.Subtotal</span></div>
+                <div>GST:<span>$@Model.GST</span></div>
+                <div>Grand Total: <span>$@Model.GrandTotal</span></div>
+
+            </div>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="CustomerIndex">Back to List</a>
+</div>

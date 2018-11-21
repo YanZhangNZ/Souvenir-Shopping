@@ -1,0 +1,57 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+
+.carousel-inner .item img {
+    height: 380px !important;
+    width: auto !important;
+}
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+.fix-height {
+    height: 380px;
+}
+
+.pic-size {
+    height: auto;
+    width: 300px;
+}
+
+.cart-style {
+    display: none;
+    position: absolute;
+    border: solid blue;
+    background-color: rgba(255,255,255,1);
+    filter: alpha(opacity=100);
+    font: #fff;
+    right: 0;
+    width: 700px;
+    font-size: 85%
+}

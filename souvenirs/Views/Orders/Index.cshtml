@@ -1,0 +1,66 @@
+﻿@model IEnumerable<souvenirs.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Orders</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GST)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subtotal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GrandTotal)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GST)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subtotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GrandTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Email)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.OrderID">Delete</a>
+                @if(item.Status == "Waiting"){
+                    @:| 
+                <a asp-action="EditOrderStatus" asp-route-id="@item.OrderID">Ship</a>
+                }
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

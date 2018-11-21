@@ -1,0 +1,12 @@
+C:\souvenirShop\souvenirs\souvenirs\bin\Release\netcoreapp2.0\souvenirs.deps.json
+C:\souvenirShop\souvenirs\souvenirs\bin\Release\netcoreapp2.0\souvenirs.runtimeconfig.json
+C:\souvenirShop\souvenirs\souvenirs\bin\Release\netcoreapp2.0\souvenirs.runtimeconfig.dev.json
+C:\souvenirShop\souvenirs\souvenirs\bin\Release\netcoreapp2.0\souvenirs.dll
+C:\souvenirShop\souvenirs\souvenirs\bin\Release\netcoreapp2.0\souvenirs.pdb
+C:\souvenirShop\souvenirs\souvenirs\obj\Release\netcoreapp2.0\souvenirs.csprojAssemblyReference.cache
+C:\souvenirShop\souvenirs\souvenirs\obj\Release\netcoreapp2.0\souvenirs.csproj.CoreCompileInputs.cache
+C:\souvenirShop\souvenirs\souvenirs\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\souvenirShop\souvenirs\souvenirs\obj\Release\netcoreapp2.0\souvenirs.AssemblyInfoInputs.cache
+C:\souvenirShop\souvenirs\souvenirs\obj\Release\netcoreapp2.0\souvenirs.AssemblyInfo.cs
+C:\souvenirShop\souvenirs\souvenirs\obj\Release\netcoreapp2.0\souvenirs.dll
+C:\souvenirShop\souvenirs\souvenirs\obj\Release\netcoreapp2.0\souvenirs.pdb

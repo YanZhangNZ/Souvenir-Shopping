@@ -1,0 +1,117 @@
+﻿@model PaginatedList<souvenirs.Models.Souvenir>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="row">
+    <div class="col-lg-2">
+        <span>Category List</span>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        category name
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>
+                        <a asp-area="" asp-controller="Souvenirs" asp-action="CustomerIndex">All Category</a>
+
+                    </td>
+
+                </tr>
+                @{var categories = ViewBag.Categories as IEnumerable<souvenirs.Models.Category>;}
+                @foreach (var item in categories)
+                {
+
+                    <tr>
+                        <td>
+                            <a asp-area="" asp-controller="Souvenirs" asp-action="CustomerIndex" asp-route-categoryId="@item.ID">@Html.DisplayFor(modelItem => item.CategoryName)</a>
+
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-lg-10">
+        <form asp-action="CustomerIndex" method="get">
+            <div class="form-actions no-color">
+                <p>
+                    Find by name: <input type="text" name="SearchString" value="@ViewData["currentfilter"]" />
+                    find by price: <input type="number" name="minPrice" value="@ViewData["minPrice"]" />~<input type="number" name="maxPrice" value="@ViewData["maxPrice"]" />
+                    <input type="hidden" value="@ViewData["CurrentCategory"]" name="categoryId" />
+                    <input type="submit" value="Search" class="btn btn-default" />
+                    <a asp-action="Index">Back to Full List</a>
+                </p>
+            </div>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>image</th>
+                    <th>price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    var imgUrl = Href("~" + item.Image);
+                    var errImg = Href("~/images/Souvenir/Unitec.jpg");
+                <tr>
+                    <td>
+                        <img style="width:250px;height:auto;" src="@imgUrl" alt="SouvenirImage"
+                             onerror="this.onerror = null;this.src='@errImg'" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+                    </td>
+                    <td>
+                        <a asp-action="AddToCart" asp-controller="ShoppingCart" asp-route-id="@item.ID">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>
+                            Add To Cart
+                        </a>
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
+        <a asp-action="CustomerIndex"
+           asp-route-page="@(Model.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           asp-route-categoryId="@ViewData["CurrentCategory"]"
+           asp-route-minPrice="@ViewData["minPrice"]"
+           asp-route-maxPrice="@ViewData["maxPrice"]"
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <a asp-action="CustomerIndex"
+           asp-route-page="@(Model.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           asp-route-categoryId="@ViewData["CurrentCategory"]"
+           asp-route-minPrice="@ViewData["minPrice"]"
+           asp-route-maxPrice="@ViewData["maxPrice"]"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
+
+    </div>
+</section>
+
